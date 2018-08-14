@@ -60,6 +60,11 @@ class CLI {
     this.log(info);
   }
 
+  async getUptime() {
+    const uptime = await this.client.getUptime();
+    this.log(uptime);
+  }
+
   async getTX() {
     const hash = this.config.str(0, '');
 
@@ -172,6 +177,9 @@ class CLI {
     switch (this.argv.shift()) {
       case 'info':
         await this.getInfo();
+        break;
+      case 'uptime':
+        await this.getUptime();
         break;
       case 'broadcast':
         await this.broadcast();
